@@ -1,14 +1,16 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "./config";
-import dotenv from "dotenv";
-dotenv.config();
+import { CreateUserSchema } from "@repo/common/types";
+// import dotenv from "dotenv";
+// dotenv.config();
 
 const app = express();
 
 app.use(express.json());
 
 app.post("/signup", async (req, res) => {
+  const data = CreateUserSchema.safeParse(req.body);
   res.json({
     userId: "123",
   });
