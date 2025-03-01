@@ -9,12 +9,14 @@ import {
 import { prismaClient } from "@repo/db/clients";
 import bcrypt from "bcrypt";
 import { middleware } from "./middleware";
+import cors from "cors";
 // import dotenv from "dotenv";
 // dotenv.config();
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.post("/signup", async (req, res) => {
   const parsedData = CreateUserSchema.safeParse(req.body);
@@ -104,30 +106,37 @@ app.post("/room", middleware, async (req, res) => {
   }
 });
 // add middleware to the below endpoint
-app.get("/chat/:roomId", async (req, res) => {
-  const roomId = Number(req.params.roomId);
-  const messages = await prismaClient.chat.findMany({
-    where: {
-      roomId: roomId,
-    },
-    orderBy: {
-      id: "desc",
-    },
-    take: 50,
-  });
+app.get("/chats/:roomId", async (req, res) => {
+  try {
+    const roomId = Number(req.params.roomId);
+    console.log(req.params.roomId);
+    const messages = await prismaClient.chat.findMany({
+      where: {
+        roomId: roomId,
+      },
+      orderBy: {
+        id: "desc",
+      },
+      take: 1000,
+    });
 
-  res.json({
-    messages,
-  });
+    res.json({
+      messages,
+    });
+  } catch (e) {
+    console.log(e);
+    res.json({
+      messages: [],
+    });
+  }
 });
 
-app.get("/chat/:slug", async (req, res) => {
+app.get("/room/:slug", async (req, res) => {
   const slug = req.params.slug;
   const room = await prismaClient.room.findFirst({
     where: {
       slug,
     },
-    take: 50,
   });
 
   res.json({
