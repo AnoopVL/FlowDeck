@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSocket } from "../hooks/useSockets";
+import { useSocket } from "../hooks/useSocket";
 
-// we create a client component to connect to the ws server
 export function ChatRoomClient({
   messages,
   id,
@@ -12,6 +11,7 @@ export function ChatRoomClient({
   id: string;
 }) {
   const [chats, setChats] = useState(messages);
+  const [currentMessage, setCurrentMessage] = useState("");
   const { socket, loading } = useSocket();
 
   useEffect(() => {
@@ -26,9 +26,38 @@ export function ChatRoomClient({
       socket.onmessage = (event) => {
         const parsedData = JSON.parse(event.data);
         if (parsedData.type === "chat") {
-          setChats((c) => [...c, parsedData.messages]);
+          setChats((c) => [...c, { message: parsedData.message }]);
         }
       };
     }
   }, [socket, loading, id]);
+
+  return (
+    <div>
+      {chats.map((m) => (
+        <div>{m.message}</div>
+      ))}
+
+      <input
+        type="text"
+        value={currentMessage}
+        onChange={(e) => {
+          setCurrentMessage(e.target.value);
+        }}></input>
+      <button
+        onClick={() => {
+          socket?.send(
+            JSON.stringify({
+              type: "chat",
+              roomId: id,
+              message: currentMessage,
+            })
+          );
+
+          setCurrentMessage("");
+        }}>
+        Send message
+      </button>
+    </div>
+  );
 }
