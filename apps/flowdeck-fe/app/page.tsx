@@ -1,100 +1,401 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  ArrowRight,
+  Layers,
+  Zap,
+  Share2,
+  PenTool,
+  Palette,
+} from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex flex-col min-h-screen">
+      {/* Navigation */}
+      <header className="border-b">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <span className="text-2xl font-bold text-primary">
+                Flow<span className="text-chart-1">Deck</span>
+              </span>
+            </div>
+            <nav className="hidden md:flex space-x-8">
+              <Link
+                href="#features"
+                className="text-muted-foreground hover:text-foreground transition-colors">
+                Features
+              </Link>
+              <Link
+                href="#how-it-works"
+                className="text-muted-foreground hover:text-foreground transition-colors">
+                How it works
+              </Link>
+            </nav>
+            <div className="flex items-center space-x-4">
+              <Button variant="outline" size="sm">
+                Log in
+              </Button>
+              <Button size="sm">Sign up</Button>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      {/* Hero Section */}
+      <section className="py-20 md:py-28">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+                Create beautiful diagrams with{" "}
+                <span className="text-chart-1">FlowDeck</span>
+              </h1>
+              <p className="mt-6 text-xl text-muted-foreground">
+                The modern diagramming tool for teams. Visualize your ideas,
+                workflows, and systems with ease.
+              </p>
+              <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="gap-2">
+                  Get started <ArrowRight className="h-4 w-4" />
+                </Button>
+                <Button size="lg" variant="outline">
+                  View examples
+                </Button>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-video bg-gradient-to-br from-chart-1/10 to-chart-2/10 rounded-lg shadow-lg overflow-hidden border">
+                <img
+                  src="https://images.unsplash.com/photo-1611224885990-ab7363d7f2a9?q=80&w=2069&auto=format&fit=crop"
+                  alt="FlowDeck Interface"
+                  className="w-full h-full object-cover opacity-90"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-background p-4 rounded-lg shadow-lg border">
+                <div className="flex items-center gap-3">
+                  <div className="h-3 w-3 rounded-full bg-chart-1"></div>
+                  <div className="h-3 w-3 rounded-full bg-chart-2"></div>
+                  <div className="h-3 w-3 rounded-full bg-chart-3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold">
+              Powerful features for your workflow
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+              FlowDeck combines simplicity with powerful features to help you
+              create stunning diagrams.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <div className="bg-card p-6 rounded-lg border shadow-sm">
+              <div className="h-12 w-12 bg-chart-1/10 rounded-lg flex items-center justify-center mb-4">
+                <PenTool className="h-6 w-6 text-chart-1" />
+              </div>
+              <h3 className="text-xl font-semibold">Intuitive Drawing</h3>
+              <p className="mt-2 text-muted-foreground">
+                Create diagrams with our easy-to-use drawing tools. No design
+                experience required.
+              </p>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="bg-card p-6 rounded-lg border shadow-sm">
+              <div className="h-12 w-12 bg-chart-2/10 rounded-lg flex items-center justify-center mb-4">
+                <Layers className="h-6 w-6 text-chart-2" />
+              </div>
+              <h3 className="text-xl font-semibold">Smart Components</h3>
+              <p className="mt-2 text-muted-foreground">
+                Use our library of pre-built components to quickly create
+                professional diagrams.
+              </p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="bg-card p-6 rounded-lg border shadow-sm">
+              <div className="h-12 w-12 bg-chart-3/10 rounded-lg flex items-center justify-center mb-4">
+                <Share2 className="h-6 w-6 text-chart-3" />
+              </div>
+              <h3 className="text-xl font-semibold">Real-time Collaboration</h3>
+              <p className="mt-2 text-muted-foreground">
+                Work together with your team in real-time, no matter where they
+                are.
+              </p>
+            </div>
+
+            {/* Feature 4 */}
+            <div className="bg-card p-6 rounded-lg border shadow-sm">
+              <div className="h-12 w-12 bg-chart-4/10 rounded-lg flex items-center justify-center mb-4">
+                <Zap className="h-6 w-6 text-chart-4" />
+              </div>
+              <h3 className="text-xl font-semibold">Lightning Fast</h3>
+              <p className="mt-2 text-muted-foreground">
+                Experience smooth performance even with complex diagrams and
+                large canvases.
+              </p>
+            </div>
+
+            {/* Feature 5 */}
+            <div className="bg-card p-6 rounded-lg border shadow-sm">
+              <div className="h-12 w-12 bg-chart-5/10 rounded-lg flex items-center justify-center mb-4">
+                <Palette className="h-6 w-6 text-chart-5" />
+              </div>
+              <h3 className="text-xl font-semibold">Customizable Styles</h3>
+              <p className="mt-2 text-muted-foreground">
+                Personalize your diagrams with custom colors, fonts, and styles.
+              </p>
+            </div>
+
+            {/* Feature 6 */}
+            <div className="bg-card p-6 rounded-lg border shadow-sm">
+              <div className="h-12 w-12 bg-chart-1/10 rounded-lg flex items-center justify-center mb-4">
+                <ArrowRight className="h-6 w-6 text-chart-1" />
+              </div>
+              <h3 className="text-xl font-semibold">Export & Share</h3>
+              <p className="mt-2 text-muted-foreground">
+                Export your diagrams in multiple formats or share them with a
+                simple link.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How it Works Section */}
+      <section id="how-it-works" className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold">How FlowDeck works</h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+              Get started in minutes and create beautiful diagrams with ease.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Step 1 */}
+            <div className="text-center">
+              <div className="h-16 w-16 bg-chart-1/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-bold text-chart-1">1</span>
+              </div>
+              <h3 className="text-xl font-semibold">Sign up for free</h3>
+              <p className="mt-2 text-muted-foreground">
+                Create an account in seconds and get started with FlowDeck.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="text-center">
+              <div className="h-16 w-16 bg-chart-2/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-bold text-chart-2">2</span>
+              </div>
+              <h3 className="text-xl font-semibold">
+                Create your first diagram
+              </h3>
+              <p className="mt-2 text-muted-foreground">
+                Use our intuitive tools to start creating your diagram right
+                away.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="text-center">
+              <div className="h-16 w-16 bg-chart-3/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-bold text-chart-3">3</span>
+              </div>
+              <h3 className="text-xl font-semibold">Share with your team</h3>
+              <p className="mt-2 text-muted-foreground">
+                Collaborate with your team and share your diagrams with the
+                world.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-16 text-center">
+            <Button size="lg" className="gap-2">
+              Get started for free <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-r from-chart-1/20 to-chart-2/20 rounded-2xl p-8 md:p-12 shadow-sm">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl font-bold">Ready to get started?</h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Join thousands of teams who use FlowDeck to visualize their
+                ideas and workflows.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="gap-2">
+                  Get started for free <ArrowRight className="h-4 w-4" />
+                </Button>
+                <Button size="lg" variant="outline">
+                  Schedule a demo
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-muted/30 py-12 mt-auto">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Product</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Features
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Templates
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Integrations
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Resources</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Documentation
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Tutorials
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Support
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Company</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Press
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Privacy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Terms
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Security
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-muted-foreground hover:text-foreground transition-colors">
+                    Cookies
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-12 pt-8 border-t">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="flex items-center">
+                <span className="text-xl font-bold text-primary">
+                  Flow<span className="text-chart-1">Deck</span>
+                </span>
+              </div>
+              <p className="mt-4 md:mt-0 text-sm text-muted-foreground">
+                © {new Date().getFullYear()} FlowDeck. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );
