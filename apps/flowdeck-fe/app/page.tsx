@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   Layers,
@@ -34,10 +33,12 @@ export default function Home() {
               </Link>
             </nav>
             <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm">
+              <button className="px-4 py-2 text-sm border rounded-md hover:bg-gray-50 transition-colors">
                 Log in
-              </Button>
-              <Button size="sm">Sign up</Button>
+              </button>
+              <button className="px-4 py-2 text-sm bg-black text-white rounded-md hover:bg-gray-800 transition-colors">
+                Sign up
+              </button>
             </div>
           </div>
         </div>
@@ -57,12 +58,12 @@ export default function Home() {
                 workflows, and systems with ease.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="gap-2">
+                <button className="px-6 py-3 text-base font-medium bg-black text-white rounded-md hover:bg-gray-800 transition-colors inline-flex items-center gap-2">
                   Get started <ArrowRight className="h-4 w-4" />
-                </Button>
-                <Button size="lg" variant="outline">
+                </button>
+                <button className="px-6 py-3 text-base font-medium border rounded-md hover:bg-gray-50 transition-colors">
                   View examples
-                </Button>
+                </button>
               </div>
             </div>
             <div className="relative">
@@ -223,9 +224,9 @@ export default function Home() {
           </div>
 
           <div className="mt-16 text-center">
-            <Button size="lg" className="gap-2">
+            <button className="px-6 py-3 text-base font-medium bg-black text-white rounded-md hover:bg-gray-800 transition-colors inline-flex items-center gap-2">
               Get started for free <ArrowRight className="h-4 w-4" />
-            </Button>
+            </button>
           </div>
         </div>
       </section>
@@ -241,12 +242,12 @@ export default function Home() {
                 ideas and workflows.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="gap-2">
+                <button className="px-6 py-3 text-base font-medium bg-black text-white rounded-md hover:bg-gray-800 transition-colors inline-flex items-center gap-2">
                   Get started for free <ArrowRight className="h-4 w-4" />
-                </Button>
-                <Button size="lg" variant="outline">
+                </button>
+                <button className="px-6 py-3 text-base font-medium border rounded-md hover:bg-gray-50 transition-colors">
                   Schedule a demo
-                </Button>
+                </button>
               </div>
             </div>
           </div>
