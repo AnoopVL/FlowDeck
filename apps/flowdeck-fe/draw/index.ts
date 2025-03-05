@@ -38,7 +38,7 @@ export async function initDraw(
     const message = JSON.parse(event.data);
     if (message.type == "chat") {
       const parsedShape = JSON.parse(message.message);
-      exisingShapes.push(parsedShape);
+      exisingShapes.push(parsedShape.shape);
       clearCanvas(exisingShapes, canvas, ctx);
     }
   };
