@@ -26,7 +26,8 @@ type Shape =
 export async function initDraw(
   canvas: HTMLCanvasElement,
   roomId: string,
-  socket: WebSocket
+  socket: WebSocket,
+  shape: string
 ) {
   const ctx = canvas?.getContext("2d");
 
@@ -42,8 +43,7 @@ export async function initDraw(
       clearCanvas(exisingShapes, canvas, ctx);
     }
   };
-  // ctx.fillStyle = "rgba(0,0,0)";
-  // ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   let startX = 0;
   let startY = 0;
   let clicked = false;
@@ -87,9 +87,6 @@ export async function initDraw(
       const width = e.clientX - startX;
       const height = e.clientY - startY;
       clearCanvas(exisingShapes, canvas, ctx);
-      //   ctx.clearRect(0, 0, canvas.width, canvas.height);
-      //   ctx.fillStyle = "rgba(0,0,0)";
-      //   ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.strokeStyle = "rgba(255,255,255)";
       ctx.strokeRect(startX, startY, width, height);
     }
