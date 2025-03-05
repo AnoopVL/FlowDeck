@@ -57,7 +57,7 @@ wss.on("connection", function connection(ws, request) {
 
     if (parsedData.type === "join_room") {
       const user = users.find((x) => x.ws === ws);
-      user?.rooms.push(parsedData.roomId);
+      user?.rooms.push(parsedData.roomId as never);
     }
 
     if (parsedData.type === "leave_room") {
@@ -65,7 +65,7 @@ wss.on("connection", function connection(ws, request) {
       if (!user) {
         return;
       }
-      user.rooms = user?.rooms.filter((x) => x === parsedData.room);
+      user.rooms = user?.rooms.filter((x) => x === parsedData.room) as [];
     }
 
     console.log("message received");
@@ -84,8 +84,8 @@ wss.on("connection", function connection(ws, request) {
       });
 
       users.forEach((user) => {
-        if (user.rooms.includes(roomId)) {
-          user.ws.send(
+        if (user.rooms.includes(roomId as never)) {
+          (user.ws as WebSocket).send(
             JSON.stringify({
               type: "chat",
               message: message,
