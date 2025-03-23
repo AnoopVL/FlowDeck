@@ -1,10 +1,17 @@
 import { initDraw } from "@/draw";
 import { useEffect, useRef, useState } from "react";
 import { IconButton } from "./IconButton";
-import { Circle, Pencil, RectangleHorizontalIcon } from "lucide-react";
+import {
+  Circle,
+  Pencil,
+  RectangleHorizontalIcon,
+  Eraser,
+  ArrowRight,
+  LetterText,
+} from "lucide-react";
 import { Game } from "@/draw/Game";
 
-export type Tool = "circle" | "rect" | "pencil";
+export type Tool = "circle" | "rect" | "pencil" | "eraser" | "arrow" | "text";
 
 export function Canvas({
   roomId,
@@ -64,13 +71,6 @@ function Topbar({
       <div className="flex gap-t">
         <IconButton
           onClick={() => {
-            setSelectedTool("pencil");
-          }}
-          activated={selectedTool === "pencil"}
-          icon={<Pencil />}
-        />
-        <IconButton
-          onClick={() => {
             setSelectedTool("rect");
           }}
           activated={selectedTool === "rect"}
@@ -81,6 +81,24 @@ function Topbar({
           }}
           activated={selectedTool === "circle"}
           icon={<Circle />}></IconButton>
+        <IconButton
+          onClick={() => {
+            setSelectedTool("eraser");
+          }}
+          activated={selectedTool === "eraser"}
+          icon={<Eraser />}></IconButton>
+        <IconButton
+          onClick={() => {
+            setSelectedTool("arrow");
+          }}
+          activated={selectedTool === "arrow"}
+          icon={<ArrowRight />}></IconButton>
+        <IconButton
+          onClick={() => {
+            setSelectedTool("text");
+          }}
+          activated={selectedTool === "text"}
+          icon={<LetterText />}></IconButton>
       </div>
     </div>
   );
