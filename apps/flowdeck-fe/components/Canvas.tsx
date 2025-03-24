@@ -1,9 +1,7 @@
-import { initDraw } from "@/draw";
 import { useEffect, useRef, useState } from "react";
 import { IconButton } from "./IconButton";
 import {
   Circle,
-  Pencil,
   RectangleHorizontalIcon,
   Eraser,
   ArrowRight,
@@ -11,7 +9,7 @@ import {
 } from "lucide-react";
 import { Game } from "@/draw/Game";
 
-export type Tool = "circle" | "rect" | "pencil" | "eraser" | "arrow" | "text";
+export type Tool = "circle" | "rect" | "eraser" | "arrow" | "text";
 
 export function Canvas({
   roomId,
