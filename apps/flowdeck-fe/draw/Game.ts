@@ -47,14 +47,12 @@ export class Game {
 
   destroy() {
     this.canvas.removeEventListener("mousedown", this.mouseDownHandler);
-
     this.canvas.removeEventListener("mouseup", this.mouseUpHandler);
-
     this.canvas.removeEventListener("mousemove", this.mouseMoveHandler);
   }
 
   setTool(
-    tool: "circle" | "arrow" | "rect" | "eraser" | "text",
+    tool: "circle" | "arrow" | "rect" | "eraser" | "text" | "select",
     textSize = 30
   ) {
     this.selectedTool = tool;
@@ -341,9 +339,7 @@ export class Game {
 
   initMouseHandlers() {
     this.canvas.addEventListener("mousedown", this.mouseDownHandler);
-
     this.canvas.addEventListener("mouseup", this.mouseUpHandler);
-
     this.canvas.addEventListener("mousemove", this.mouseMoveHandler);
   }
 }
