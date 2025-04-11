@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -7,13 +8,13 @@ import {
   PenTool,
   Palette,
 } from "lucide-react";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 // import { useAuth } from "@clerk/nextjs";
 // import { useEffect } from "react";
 
 export default function Home() {
   // const { isSignedIn } = useAuth();
-  // const router = useRouter();
+  const router = useRouter();
   // useEffect(() => {
   //   console.log("isSignedIn:", isSignedIn); // Add this for debugging
   //   if (isSignedIn === undefined) return;
@@ -21,12 +22,12 @@ export default function Home() {
   //     router.push("/dashboard");
   //   }
   // }, [isSignedIn, router]);
-  // const handleLogin = () => {
-  //   router.push("/sign-in");
-  // };
-  // const handleSignUp = () => {
-  //   router.push("/sign-up");
-  // };
+  const handleLogin = () => {
+    router.push("auth/sign-in");
+  };
+  const handleSignUp = () => {
+    router.push("auth/sign-up");
+  };
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation */}
@@ -51,10 +52,14 @@ export default function Home() {
               </Link>
             </nav>
             <div className="flex items-center space-x-4">
-              <button className="px-4 py-2 text-sm border rounded-md hover:bg-gray-50 transition-colors">
+              <button
+                className="px-4 py-2 text-sm border rounded-md hover:bg-gray-50 transition-colors"
+                onClick={handleLogin}>
                 Log in
               </button>
-              <button className="px-4 py-2 text-sm bg-black text-white rounded-md hover:bg-gray-800 transition-colors">
+              <button
+                className="px-4 py-2 text-sm bg-black text-white rounded-md hover:bg-gray-800 transition-colors"
+                onClick={handleSignUp}>
                 Sign up
               </button>
             </div>
